@@ -1,0 +1,31 @@
+.header {
+    
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &__img{
+        width: 90vw;
+        height: 40vh;
+        background-image: url("../images/backgroundheader.jpg");
+        background-size: cover;
+        
+        
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    align-items: center;
+    &__img {
+        width: 250px;
+        height: 260px;
+    }
+    &__text {
+        margin: 10px;
+    }
+}
