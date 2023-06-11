@@ -5,6 +5,8 @@ const ulElement =document.querySelector('.js_listUl');
 const url = 'https://api.disneyapi.dev/character';
 
 let listCharacterApi = [];
+let nextPageUrl= 'http://api.disneyapi.dev/character?page=2&pageSize=50';
+
 
 //solicitud al servidor
 fetch(url)
@@ -13,7 +15,26 @@ fetch(url)
     console.log(data);
     listCharacterApi = data.data; 
     renderCharacterList(listCharacterApi);
+    //añadido para poner paginación
+    nextPageUrl= data.next;
 });
+
+//function para mostrar la siguiente pagina
+function localNextPage() {
+  if (nextPageUrl) {
+    fetch(nextPageUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        listCharacterApi = listCharacterApi.concat(data.data);
+        renderCharacterList(listCharacterApi);
+        nextPageUrl = data.next;
+      })
+      
+  }
+};
+console.log (localNextPage());
+
+
 
 //función renderizar toda la lista de characters
 function renderCharacterList(listData){
@@ -23,7 +44,7 @@ function renderCharacterList(listData){
     }
 };
 
-//función para renderizar personaje
+//función para renderizar personaje(foto y nombre)
 function renderCharacter(characters){
   
     let imageUrl = characters.imageUrl || './assets/images/imagenRepuesto.png';
@@ -37,4 +58,3 @@ function renderCharacter(characters){
   return html;
 
 };
-
