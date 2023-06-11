@@ -7,7 +7,7 @@ const url = 'https://api.disneyapi.dev/character';
 let listCharacterApi = [];
 let nextPageUrl= 'http://api.disneyapi.dev/character?page=2&pageSize=50';
 
-
+/////////////////////////////////////////////////////////FETCH DISNEY/////////////////////////////
 //solicitud al servidor
 fetch(url)
 .then((response)=> response.json())
@@ -32,9 +32,9 @@ function localNextPage() {
       
   }
 };
-console.log (localNextPage());
 
 
+//////////////////////////////////////////////FUNCIONES//////////////////////////////////////////////////////////////////////////////
 
 //función renderizar toda la lista de characters
 function renderCharacterList(listData){
@@ -49,12 +49,13 @@ function renderCharacter(characters){
   
     let imageUrl = characters.imageUrl || './assets/images/imagenRepuesto.png';
 
-    let html = `<li class = card">
+    let html = `<li class = card" id=${characters.id}>
       <div class="character">
-        <img class="character__img js_imgCard" src="${characters.imageUrl}" alt="">
+        <img class="character__img js_imgCard" src=${characters.imageUrl} alt="">
         <p class="character__text js_textCard">${characters.name}</p>
       </div>
   </li>`;
   return html;
 
 };
+
