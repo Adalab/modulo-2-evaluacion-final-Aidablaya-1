@@ -25,12 +25,16 @@ function renderCharacterList(listData){
 
 //función para renderizar personaje
 function renderCharacter(characters){
-    let html= `<li card">
+  
+    let imageUrl = characters.imageUrl || './assets/images/imagenRepuesto.png';
+
+    let html = `<li class = card">
       <div class="character">
         <img class="character__img js_imgCard" src="${characters.imageUrl}" alt="">
         <p class="character__text js_textCard">${characters.name}</p>
       </div>
   </li>`;
   return html;
-;
+
 };
+
