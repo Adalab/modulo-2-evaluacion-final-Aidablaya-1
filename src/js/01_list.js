@@ -18,6 +18,7 @@ fetch(url)
     //añadido para poner paginación
     nextPageUrl= data.next;
 });
+console.log (localNextPage())
 
 //function para mostrar la siguiente pagina
 function localNextPage() {
@@ -36,12 +37,17 @@ function localNextPage() {
 
 //////////////////////////////////////////////FUNCIONES//////////////////////////////////////////////////////////////////////////////
 
-//función renderizar toda la lista de characters
+//función renderizar toda la lista de characters//recorrer array
 function renderCharacterList(listData){
     for(const character of listData){
-      ulElement.innerHTML += renderCharacter(character);
-      
+      ulElement.innerHTML += renderCharacter(character);      
     }
+    const liElements = document.querySelectorAll('.js_card');
+    //necesito otro bucle para recorrer lis
+    for(const li of liElements){
+      li.addEventListener('click', handleClick);
+    }
+
 };
 
 //función para renderizar personaje(foto y nombre)
@@ -49,13 +55,18 @@ function renderCharacter(characters){
   
     let imageUrl = characters.imageUrl || './assets/images/imagenRepuesto.png';
 
-    let html = `<li class = card" id=${characters.id}>
+    let html = `<li class = "card js_card" id=${characters.id}>
       <div class="character">
         <img class="character__img js_imgCard" src=${characters.imageUrl} alt="">
         <p class="character__text js_textCard">${characters.name}</p>
       </div>
   </li>`;
   return html;
+};
 
+
+function handleClick (ev) {
+  const id = ev.currentTarget.id;
+  console.log(id);
 };
 
