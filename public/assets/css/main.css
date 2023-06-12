@@ -51,4 +51,8 @@ main {
 li {
   list-style: none; }
 
+.boxFavorites {
+  background-color: #d4a5a5;
+  width: 600px; }
+
 /*# sourceMappingURL=main.css.map */
