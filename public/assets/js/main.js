@@ -15,11 +15,19 @@ let listCharacterFavorite = [];
 //verificar si hay cosas en el localStorage
 const characterLocalStorage = JSON.parse(localStorage.getItem('character'));
 console.log (characterLocalStorage);
+const characterLocalStorageFavorite = JSON.parse(localStorage.getItem('favorite'));
+console.log (characterLocalStorageFavorite);
+
+/////////////////////////////////////////////////////////FETCH DISNEY/////////////////////////////
 
 function init () {
   if (characterLocalStorage) {
     listCharacterApi = characterLocalStorage;
     renderCharacterList(listCharacterApi);
+  if (characterLocalStorageFavorite) {
+    listCharacterFavorite = characterLocalStorageFavorite;
+    renderFavoriteList(listCharacterFavorite);
+  }
   } else {
     fetch(url)
       .then((response)=> response.json())
@@ -31,27 +39,16 @@ function init () {
         renderCharacterList(listCharacterApi);
         //añadido para poner paginación
         nextPageUrl= data.next;
+        renderFavoriteList(listCharacterFavorite);
         //coger dato para guardarlos
         localStorage.setItem('character', JSON.stringify(listCharacterApi));
+        
 })
   }
 };
 
 init();
-/////////////////////////////////////////////////////////FETCH DISNEY/////////////////////////////
-//solicitud al servidor
-/*fetch(url)
-.then((response)=> response.json())
-.then((data)=>{  
-    console.log(data);
-    listCharacterApi = data.data; 
-    console.log (listCharacterApi);
-    renderCharacterList(listCharacterApi);
-    //añadido para poner paginación
-    nextPageUrl= data.next;
-    //coger dato para guardarlos
-    localStorage.setItem('character', JSON.stringify(listCharacterApi));
-});*/
+
 
 
 //function para mostrar la siguiente pagina
@@ -71,7 +68,7 @@ function localNextPage() {
   }
 };
 
-
+localNextPage();
 
 //////////////////////////////////////////////FUNCIONES//////////////////////////////////////////////////////////////////////////////
 
@@ -124,6 +121,7 @@ function handleClick (ev) {
     listCharacterFavorite.splice(indexCharacter, 0);
   }
   //guardar la lista en local Storage
+    localStorage.setItem('favorite', JSON.stringify(listCharacterFavorite));
     renderFavoriteList();
 };
 
