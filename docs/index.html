@@ -3,66 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adalab Web Starter Kit</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <title>Buscador Disney</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="icon" href="./assets/images/favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/5168f8ef34.js"
+      crossorigin="anonymous"
+    ></script>    
   </head>
 
   <body>
-    <div class="page">
-      <header class="page__header">
-        <img src="./assets/images/logo-adalab.png" alt="Adalab">
-        <h1>Bienvenidos a Adalab</h1>
-      </header>
+    <header class="header">
+        <h1 class="header__title">Create your collection of disney characters</h1>
+        <div class="header__img"></div>
+    </header>
 
-      <main class="page__main">
-        <h2>Este es el starter kit de Adalab</h2>
-        <p>Lo usamos para aprender:</p>
-        <ul class="main__list">
-          <li>Sass</li>
-          <li>HTML partials</li>
-          <li>Gulp</li>
-          <li>y muchas cosas más</li>
+
+    <main>
+      <form class="boxSearch">
+        <input type="text" name="" placeholder="Search" id="" class="js_search boxSearch__search">
+        <input type="submit" value="" class="js_btnSearch boxSearch__btnSearch">
+        
+      </form>
+      <h3 class="characterTitle"><i class="fa-solid fa-user" style="color: #f1f4f9;"></i>CHARACTERS</h3>
+      <section class="boxCharacters">
+        
+        <ul class="card js_listUl">
         </ul>
-        <p>Si quieres saber cúales son las rutas correctas para:</p>
-        <ul class="main__list">
-          <li>
-            una <code class="code">&lt;img /&gt;</code> mira el fichero
-            <code class="code">./src/html/partials/header.html</code>.
-          </li>
-          <li>
-            y para un <code class="code">background-image</code> mira el fichero
-            <code class="code">./src/html/scss/layout/_page.scss</code>.
-          </li>
-        </ul>
-        <p>
-          Si quieres saber cómo usar un partial HTML dentro de otro partial, busca en la carperta
-          <code class="code">./src/html/index.html</code> y
-          <code class="code">./src/html/partials/main.html</code>, y verás cómo estamos creando estos
-          enlaces:
-        </p>
-        <ul class="main__list">
-          <li>
-            <a class="link__adalab" href="https://adalab.es">Adalab</a>
-
-          </li>
-          <li>
-            <a class="" href="./more-info.html">Más info del starter kit</a>
-
-          </li>
-        </ul>
-      </main>
-
-      <footer class="page__footer">
-        <small>
-          &copy; Todos los derechos reservados
-          <a class="link__adalab" href="https://adalab.es">Adalab</a>
-
-        </small>
-      </footer>
-
-    </div>
+        <article class="boxFavorites" >
+          <h4 class="boxFavorites__title"><i class="fa-solid fa-star" style="color: #f5f5f5;"></i>FAVORITES</h4>
+          <input type="submit" value="" class="js_btnTrash boxFavorites__btnTrash">
+          <ul class="js_characterFavorite"></ul>
+        </article>
+      </section>
+      
+    </main>
+    <footer>
+      <p></p>
+    </footer>
+    
     <script src="./assets/js/main.js"></script>
+  
+    
   </body>
 </html>
