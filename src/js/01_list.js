@@ -49,8 +49,6 @@ function init () {
 
 init();
 
-
-
 //function para mostrar la siguiente pagina
 function localNextPage() {
   if (nextPageUrl) {
@@ -68,7 +66,7 @@ function localNextPage() {
   }
 };
 
-localNextPage();
+localNextPage()
 
 //////////////////////////////////////////////FUNCIONES//////////////////////////////////////////////////////////////////////////////
 
@@ -95,12 +93,14 @@ function renderCharacter(characters){
   
     let imageUrl = characters.imageUrl || './assets/images/imagenRepuesto.png';
 
+
     let html = `<li class = "card js_card" id=${characters._id}>
       <div class="character">
         <img class="character__img js_imgCard" src=${characters.imageUrl} alt="">
         <p class="character__text js_textCard">${characters.name}</p>
       </div>
   </li>`;
+ 
   return html;
 };
 
@@ -117,7 +117,9 @@ function handleClick (ev) {
   //validar
   if( indexCharacter === -1 ){
     listCharacterFavorite.push(selectedCharacter);
+    
   } else {
+    //splice elimina o agrega
     listCharacterFavorite.splice(indexCharacter, 0);
   }
   //guardar la lista en local Storage
@@ -130,6 +132,7 @@ function renderFavoriteList (){
   ulFavorites.innerHTML='';
   for(const fav of listCharacterFavorite){
     ulFavorites.innerHTML += renderCharacter(fav);
+    
   }
 };
 
@@ -146,3 +149,49 @@ const handleClickSearch = (ev) => {
 };
 
 btnSearch.addEventListener('click', handleClickSearch);
+const liElements = document.querySelectorAll('.js_card'); 
+
+//////////////////////TRASH////////////////////////////////////////////
+const btnTrash = document.querySelector('.js_btnTrash');
+
+const handleClickTrash = () => {
+  if (listCharacterFavorite.length > 0) {
+    listCharacterFavorite.shift(1)
+    
+  }
+  renderFavoriteList();
+};
+
+btnTrash.addEventListener('cliclk', handleClickTrash);
+
+
+/*
+function renderTrash (){
+  const trash = '<i class="fa-solid fa-trash" style="color: #eaeaeb;"></i>';
+  if (renderFavoriteList) {
+    trash.innerHTML += renderFavoriteList;
+  
+  }
+}*/
+/*
+const btnTrash = document.querySelector('.js_btnTrash');
+
+const handleClickTrash = (ev) => {
+  if (listCharacterFavorite) {
+    openPopup();
+  }
+};
+
+btnTrash.addEventListener('cliclk', handleClickTrash);
+
+function openPopup(){
+  const popupWindow = window.open('', '_blank', 'width=400,height=300');
+
+  let html =  `<h1>Lista de Nombres</h1>
+               <ul>
+               <li class="character__text js_textCard">${characters.name}</li>
+               </ul>;`
+
+                popupWindow.document.write(html);
+                popupWindow.document.close();
+  };*/
